@@ -40,9 +40,7 @@
           <tbody>
             <tr>
               <td>
-                <%= link_to book_path(@book.id) do %>
-                <%= image_tag 'no_image.jpg' %>
-                <% end %>
+                <%= image_tag @book.user.get_profile_image(100,100) %>
                 <br><%= link_to @book.user.name %>
               </td>
               <td><%= link_to @book.title %></td>
