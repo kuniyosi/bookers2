@@ -4,6 +4,14 @@
     <div class = "row">
       <div class = "col-md-3">
         <%= render 'users/user', user: @user %>
+        
+        <div class = "row">
+        <% if @user == current_user %>
+         <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+         <% end %>
+        <% end %>
+        </div>
 
         <%= render 'books/book', book: @book %>
 
@@ -21,8 +29,8 @@
             <% @users.each do |user| %>
             <tr>
               <td>
-                <%= link_to user_path(@user.id) do %>
-                 <%= image_tag @user.get_profile_image(100,100) %>
+                <%= link_to user_path(user.id) do %>
+                 <%= image_tag user.get_profile_image(100,100) %>
                 <% end %>
               </td>
               <td><%= user.name %></td>
